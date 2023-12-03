@@ -1,0 +1,73 @@
+export const CONFIG = {
+  Base_URL: 'https://porqii.com/guardrail/',
+  // TOKEN_SECRET_KEY: '',
+  // UX_Basename: import.meta.env.VITE_UX_CONFIG_BASE,
+
+  PG_OPTIONS: [
+    {
+      name: 'Comfort Haven',
+      price: '$800',
+      address: '123 Main Street, Bangalore',
+      parkingSpace: 'Available',
+      bathroom: '',
+      bedroom: '1-2-3-4',
+      keys: 'Provided',
+    },
+    {
+      name: 'City Retreat',
+      price: '$700',
+      address: '456 Central Avenue, Bangalore',
+      parkingSpace: 'Not Available',
+      bathroom: 'Private',
+      bedroom: '1-2-3',
+      keys: 'Included',
+    },
+    {
+      name: 'Urban Oasis',
+      price: '$900',
+      address: '789 Downtown Road, Bangalore',
+      parkingSpace: 'Available',
+      bathroom: 'Shared',
+      bedroom: '1-2',
+      keys: 'Provided',
+    },
+    {
+      name: 'Serenity Residences',
+      price: '$750',
+      address: '101 Tranquil Lane, Bangalore',
+      parkingSpace: 'Available',
+      bathroom: 'Private',
+      bedroom: '1-2-4',
+      keys: 'Included',
+    },
+    {
+      name: 'Serenity Residences',
+      price: '$750',
+      address: '101 Tranquil Lane, Bangalore',
+      parkingSpace: 'Available',
+      bathroom: 'Private',
+      bedroom: '1-2-4',
+      keys: 'Included',
+    },
+  ],
+  PG_REVIEWS: [
+    { name: 'Alice', comment: 'Great location and affordable. Loved the communal vibe! Highly recommend.' },
+    { name: 'Bob', comment: 'Comfort Haven exceeded expectations. Clean, secure, and friendly atmosphere.' },
+    { name: 'Charlie', comment: 'Serenity Residences provided a peaceful stay. Private room was a plus. Will return!' },
+    { name: 'David', comment: 'City Retreat is fantastic! Private bathrooms, included keys, and a cozy atmosphere. Perfect for my needs.' },
+    {
+      name: 'Eve',
+      comment: 'Urban Oasis is a gem. Shared spaces are vibrant, making it easy to connect with fellow residents. Thumbs up!',
+    },
+    {
+      name: 'Frank',
+      comment: 'Serenity Residences offers tranquility. The private bedroom was comfortable. Recommend for a peaceful stay.',
+    },
+    { name: 'Grace', comment: 'Comfort Haven is a budget-friendly choice. Enjoyed the inclusive atmosphere and convenient location.' },
+    { name: 'Harry', comment: 'Urban Oasis felt like a second home. Shared spaces were lively, and the overall vibe was welcoming.' },
+    {
+      name: 'Ivy',
+      comment: 'City Retreat provided a balance of privacy and community. The two-bedroom setup suited my preferences perfectly.',
+    },
+  ],
+};

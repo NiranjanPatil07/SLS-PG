@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .main-container {
+    @apply mx-auto my-4 flex w-full max-w-[1440px] flex-col justify-center rounded-md px-8 py-4;
+  }
+}
