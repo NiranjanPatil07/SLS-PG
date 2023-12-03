@@ -1,10 +1,38 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { CONFIG } from '../../config/config';
+import { motion, useInView } from 'framer-motion';
 
 const PgCards = () => {
   const AVAILABLE_PG = CONFIG?.PG_OPTIONS;
+  const CARD_REF = useRef(null);
+  const CARD_IN_VIEW = useInView(CARD_REF, { once: true });
+
+  const ANIMATE_CONTAINER = {
+    hidden: { opacity: 0, y: 100 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        staggerChildren: 0.3,
+        duration: 0.7,
+        delay: 0.2,
+      },
+    },
+  };
+  const ITEM_ANIMATION = {
+    show: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: -100 },
+  };
+  //   initial='hidden'
+  //   whileInView='visible'
+  //   viewport={{ once: true }}
+  //   transition={{ duration: 0.7 }}
+  //   variants={{
+  //     visible: { opacity: 1, scale: 1 },
+  //     hidden: { opacity: 0, scale: 0 },
+  //   }}
   return (
-    <div className='main-container'>
+    <div className='main-container' ref={CARD_REF}>
       <header className='p-4'>
         <h2 class='text-xl font-bold text-gray-900 sm:text-3xl'>Available PG</h2>
 
@@ -12,10 +40,17 @@ const PgCards = () => {
           Discover comfort and convenience in Bangalore's PGs. From shared spaces to private retreats, find your ideal stay with ease
         </p>
       </header>
-      <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3'>
+      <motion.ul
+        initial='hidden'
+        whileInView='visible'
+        viewport={{ once: true }}
+        variants={ANIMATE_CONTAINER}
+        animate={CARD_IN_VIEW ? 'show' : 'hidden'}
+        className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3'
+      >
         {AVAILABLE_PG?.map((item) => {
           return (
-            <a href='#' className='block rounded-xl bg-white-900 p-4 shadow-lg '>
+            <motion.li variants={ITEM_ANIMATION} className='block rounded-xl bg-white-900 p-4 shadow-lg '>
               <img
                 alt='Home'
                 src='https://images.unsplash.com/photo-1613545325278-f24b0cae1224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
@@ -108,10 +143,10 @@ const PgCards = () => {
                   </div>
                 </div>
               </div>
-            </a>
+            </motion.li>
           );
         })}
-      </div>
+      </motion.ul>
     </div>
   );
 };

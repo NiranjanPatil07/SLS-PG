@@ -10,3 +10,14 @@
   font-family: Inter;
   background-color: #f9fafb;
 }
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 7px;
+  background: #4338ca;
+  transform-origin: 0%;
+  z-index: 50;
+}

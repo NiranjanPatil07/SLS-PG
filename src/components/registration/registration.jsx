@@ -53,7 +53,7 @@ const Registration = () => {
                   type='text'
                   id='LastName'
                   name='last_name'
-                  className='py-2text-sm mt-1 w-full rounded-md border-gray-200 bg-white-800 px-2 px-2 py-2 text-gray-700 shadow-sm'
+                  className='py-2text-sm mt-1 w-full rounded-md border-gray-200 bg-white-800 px-2 py-2 text-gray-700 shadow-sm'
                 />
               </div>
 

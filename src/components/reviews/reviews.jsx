@@ -1,17 +1,45 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { CONFIG } from '../../config/config';
+import { motion, useInView } from 'framer-motion';
 const Reviews = () => {
   const PG_REVIEWS = CONFIG?.PG_REVIEWS;
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+  const ANIMATE_CONTAINER = {
+    hidden: { opacity: 0, y: 100 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        staggerChildren: 0.2,
+        duration: 0.7,
+        delay: 0.2,
+      },
+    },
+  };
+  const ITEM_ANIMATION = {
+    show: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: -100 },
+  };
   return (
-    <div>
+    <div ref={ref}>
       <section class='bg-white'>
         <div class='mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16'>
           <h2 class='text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl'>Read trusted reviews from our customers</h2>
 
-          <div class='mt-8 [column-fill:_balance] sm:columns-2 sm:gap-6 lg:columns-3 lg:gap-8'>
+          <motion.ul
+            initial='hidden'
+            whileInView='visible'
+            viewport={{ once: true }}
+            variants={ANIMATE_CONTAINER}
+            animate={isInView ? 'show' : 'hidden'}
+            class='mt-8 [column-fill:_balance] sm:columns-2 sm:gap-6 lg:columns-3 lg:gap-8'
+            // style={{ display: isInView ? 'block' : 'none' }}
+          >
             {PG_REVIEWS?.map((review) => {
               return (
-                <div class='mb-8 sm:break-inside-avoid'>
+                <motion.li class='mb-8 sm:break-inside-avoid' variants={ITEM_ANIMATION}>
                   <blockquote class='rounded-lg bg-white-900 p-6 shadow-lg sm:p-8'>
                     <div class='flex items-center gap-4'>
                       <img
@@ -45,10 +73,10 @@ const Reviews = () => {
 
                     <p class='mt-4 text-gray-700'>{review?.comment}</p>
                   </blockquote>
-                </div>
+                </motion.li>
               );
             })}
-          </div>
+          </motion.ul>
         </div>
       </section>
     </div>
